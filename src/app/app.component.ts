@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GdocService } from './gdoc.service';
+import { GdocService } from './services/gdoc.service';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +7,13 @@ import { GdocService } from './gdoc.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'padel';
+  title = 'p.p.padel';
 
   constructor(
     private gdocSErvice: GdocService
   ) {
-    this.gdocSErvice.getCooker().subscribe(res => {
-      console.log("------- ~ AppComponent ~ this.gdocSErvice.getCooker ~ res", res);
+    this.gdocSErvice.getResults().subscribe(res => {
       return
-
     })
   }
 }
