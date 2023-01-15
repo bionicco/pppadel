@@ -47,7 +47,7 @@ export class AlgoService {
   }
 
   private createResult(gResult: gdocResult): Result {
-    const score: number[] = [Number.parseInt(gResult['Risultato A']), Number.parseInt(gResult['Risultato B'])];
+    const score: number[] = [Number.parseInt(gResult['Risultato A']), Number.parseInt(gResult['Risultato B']), Number.parseInt(gResult['Games to win'])];
     const teams = this.createTeams([gResult['Giocatore A1'], gResult['Giocatore A2']], [gResult['Giocatore B1'], gResult['Giocatore B2']], score);
     const prevision = this.createPrevision(teams);
     const date = new Date();//gResult.data); // TODO check date format to parse

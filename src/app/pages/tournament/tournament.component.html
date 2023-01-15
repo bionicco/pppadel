@@ -1,0 +1,36 @@
+<div class="resultSection">
+    <div class="title">
+        Risultati
+    </div>
+    <div class="resultList">
+        <div class="result" *ngFor="let result of results ">
+            <div class="resultTeam" *ngFor="let team of result.teams">
+                {{team.players[0]}} {{team.players[1]}}
+            </div>
+            <div class="resultScore">
+                <div *ngIf="result.score[0] || result.score[1]">
+                    {{result.score[0]}} - {{result.score[1]}}
+                </div>
+                <div *ngIf="!result.score[0] && !result.score[1]">
+                    &nbsp; - &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="teamSection">
+    <div class="title">
+        Classifica
+    </div>
+    <div class="teamList">
+        <div class="team" *ngFor="let team of teams">
+            <div class="teamName">
+                {{team.players[0]}} {{team.players[1]}}
+            </div>
+            <div class="teamScore">
+                {{team.totalPoints}}
+            </div>
+        </div>
+    </div>
+</div>

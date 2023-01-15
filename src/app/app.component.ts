@@ -10,10 +10,6 @@ export class AppComponent {
   title = 'p.p.padel';
 
   constructor(
-    private gdocSErvice: GdocService
   ) {
-    this.gdocSErvice.getResults().subscribe(res => {
-      return
-    })
   }
 }
