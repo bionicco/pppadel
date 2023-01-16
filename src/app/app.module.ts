@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ActivityRepeatBtnComponent } from './components/activities/activity-repeat-btn/activity-repeat-btn.component';
+import { HomeComponent } from './pages/home/home.component';
+import { TournamentComponent } from './pages/tournament/tournament.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ActivityRepeatBtnComponent
+    ActivityRepeatBtnComponent,
+    HomeComponent,
+    TournamentComponent
   ],
   imports: [
     BrowserModule,

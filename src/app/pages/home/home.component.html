@@ -1,0 +1,29 @@
+RISULTATI:
+<div *ngFor="let result of results" style="display: flex; text-align: center;">
+    <div>
+        {{result.teams[0].players[0].name}}
+        <pre>{{result.teams[0].players[0] | json}} </pre>
+    </div>
+    <div>
+        {{result.teams[0].players[1].name}}
+        <pre>{{result.teams[0].players[1] | json}} </pre>
+    </div>
+    <div>
+        <div style="font-size:large">{{result.score[0]}} - {{result.score[1]}} </div>
+        <div style="font-size: small;">{{result.prevision[0]}} - {{result.prevision[1]}} </div>
+
+    </div>
+    <div>
+        {{result.teams[1].players[0].name}}
+        <pre>{{result.teams[1].players[0] | json}} </pre>
+    </div>
+    <div>
+        {{result.teams[1].players[1].name}}
+        <pre>{{result.teams[1].players[1] | json}} </pre>
+    </div>
+
+</div>
+GIOCATORI:
+<div *ngFor="let player of players">
+    {{player.name}} : {{player.value}} ({{player.totalGamesWon}} / {{player.totalGamesPlayed}})
+</div>

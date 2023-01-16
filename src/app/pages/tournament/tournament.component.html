@@ -1,0 +1,73 @@
+<div class="pageTitle">
+    Torneo 0 del gruppo P.P.Padel
+</div>
+
+<div class="teamSection" *ngIf="winningTeams?.length">
+    <div class="title">
+        Vincitori
+    </div>
+    <div class="teamList">
+        <div class="team" *ngFor="let team of winningTeams">
+            <div class="teamName">
+                {{team.position}} {{team.players[0]}} {{team.players[1]}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="resultSection">
+    <div class="title">
+        Partite
+    </div>
+    <div class="resultList">
+
+        <div *ngFor="let result of results ">
+            <div class="resultTitle" *ngIf="getMatchName(result.code)">
+                {{getMatchName(result.code)}}
+            </div>
+            <div class="result">
+                <div class="resultTeam" *ngFor="let team of result.teams">
+                    {{team.players[0] || '?'}} {{team.players[1] || '?'}}
+                </div>
+                <div class="resultScore">
+                    <div *ngIf="result.score[0] || result.score[1]">
+                        {{result.score[0]}} - {{result.score[1]}}
+                    </div>
+                    <div *ngIf="!result.score[0] && !result.score[1]">
+                        &nbsp; - &nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="teamSection">
+    <div class="title">
+        Classifica Girone
+    </div>
+    <div class="teamList">
+        <div class="team" *ngFor="let team of teams">
+            <div class="teamName">
+                {{team.players[0]}} {{team.players[1]}}
+            </div>
+            <div class="teamScore">
+                {{team.totalPoints}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="infoSection">
+    <div class="title">
+        Informazioni
+    </div>
+    <div class="info">
+        Durante la fase del girone il punteggio è calcolato con il seguente metodo:
+        <ul>
+            <li>Per ogni partita vinta si ottengono 15 punti meno il numero di game persi</li>
+            <li>Per ogni partita persa si ottengono un numero di punti pari ai game vinti</li>
+        </ul>
+    </div>
+</div>

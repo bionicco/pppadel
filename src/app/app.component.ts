@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GdocService } from './gdoc.service';
+import { GdocService } from './services/gdoc.service';
 import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
@@ -7,20 +7,16 @@ import { PrimeNGConfig } from 'primeng/api';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  title = 'padel';
+export class AppComponent {
+  title = 'p.p.padel';
 
   constructor(
     private gdocSErvice: GdocService,
     private primengConfig: PrimeNGConfig
   ) {
-    this.gdocSErvice.getCooker().subscribe(res => {
-      console.log("------- ~ AppComponent ~ this.gdocSErvice.getCooker ~ res", res);
-      return
-
-    })
   }
 
   ngOnInit() {
-
+    this.primengConfig.ripple = true;
   }
+}
