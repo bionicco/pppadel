@@ -60,7 +60,7 @@ export class TournamentService {
     const teamA = this.getTeam(playersNamesA[0], playersNamesA[1]);
     const teamB = this.getTeam(playersNamesB[0], playersNamesB[1]);
 
-    if (this.isFinal(code)) {
+    if (this.isFinal(code) && (score[0] || score[1])) {
       const winTeamA: TournamentWinningTeam = { players: [playersNamesA[0], playersNamesA[1]], position: this.isFinal(code) };
       const winTeamB: TournamentWinningTeam = { players: [playersNamesB[0], playersNamesB[1]], position: this.isFinal(code) };
       // Update winning teams
