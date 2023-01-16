@@ -1,7 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { gdocResult } from '../models/gdocs';
 import { Player, Result } from '../models/result';
-import { TournamentResult, TournamentTeam } from '../models/tournament';
+import { TournamentResult, TournamentTeam, TournamentWinningTeam } from '../models/tournament';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +14,15 @@ export class TournamentService {
 
   public teams: TournamentTeam[] = [];
 
+  public winningTeams: TournamentWinningTeam[] = [];
+
 
   constructor() { }
 
   calculator(results: gdocResult[]) {
     this.results = [];
     this.teams = [];
+    this.winningTeams = [];
 
     results.forEach((result, index) => {
       this.results.push(this.createResult(result));
@@ -31,15 +34,16 @@ export class TournamentService {
   }
 
   private createResult(gResult: gdocResult): TournamentResult {
-    console.log("------- ~ TournamentService ~ createResult ~ gResult", gResult);
     const score: number[] = [this.parseNumber(gResult['Risultato A']), this.parseNumber(gResult['Risultato B'])];
     const gamesToWin: number = this.parseNumber(gResult['Games to win']);
-    const teams = this.createTeams([gResult['Giocatore A1'], gResult['Giocatore A2']], [gResult['Giocatore B1'], gResult['Giocatore B2']], score);
+    const code: string = gResult['Code'];
+    const teams = this.createTeams([gResult['Giocatore A1'], gResult['Giocatore A2']], [gResult['Giocatore B1'], gResult['Giocatore B2']], score, code);
 
     return {
       teams,
       score,
-      gamesToWin
+      gamesToWin,
+      code,
     }
   }
 
@@ -51,17 +55,45 @@ export class TournamentService {
     return res;
   }
 
-  private createTeams(playersNamesA: string[], playersNamesB: string[], score: number[]): TournamentTeam[] {
+  private createTeams(playersNamesA: string[], playersNamesB: string[], score: number[], code: string): TournamentTeam[] {
 
     const teamA = this.getTeam(playersNamesA[0], playersNamesA[1]);
     const teamB = this.getTeam(playersNamesB[0], playersNamesB[1]);
 
-    // Update teams
-    this.updateTeam(teamA, score);
-    this.updateTeam(teamB, [...score].reverse());
+    if (this.isFinal(code)) {
+      const winTeamA: TournamentWinningTeam = { players: [playersNamesA[0], playersNamesA[1]], position: this.isFinal(code) };
+      const winTeamB: TournamentWinningTeam = { players: [playersNamesB[0], playersNamesB[1]], position: this.isFinal(code) };
+      // Update winning teams
+      if (score[0] > score[1]) {
+        winTeamB.position += 1;
+      } else {
+        winTeamA.position += 1;
+      }
+
+      this.winningTeams.push(winTeamA);
+      this.winningTeams.push(winTeamB);
+
+    } else {
+      // Update teams
+      this.updateTeam(teamA, score);
+      this.updateTeam(teamB, [...score].reverse());
+
+    }
+
 
 
     return [teamA, teamB];
+  }
+
+  private isFinal(code: string): number {
+    switch (code.split('-')[1].toLocaleUpperCase()) {
+      case 'F3':
+        return 3;
+      case 'F1':
+        return 1;
+      default:
+        return 0;
+    }
   }
 
   getTeam(player1: string, player2: string): TournamentTeam {

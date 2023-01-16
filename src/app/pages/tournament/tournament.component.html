@@ -1,18 +1,41 @@
+<div class="pageTitle">
+    Torneo 0 del gruppo P.P.Padel
+</div>
+
+<div class="teamSection" *ngIf="winningTeams?.length">
+    <div class="title">
+        Vincitori
+    </div>
+    <div class="teamList">
+        <div class="team" *ngFor="let team of winningTeams; let idx = index">
+            <div class="teamName">
+                {{idx+1}} : {{team.players[0]}} {{team.players[1]}}
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="resultSection">
     <div class="title">
-        Risultati
+        Partite
     </div>
     <div class="resultList">
-        <div class="result" *ngFor="let result of results ">
-            <div class="resultTeam" *ngFor="let team of result.teams">
-                {{team.players[0]}} {{team.players[1]}}
+
+        <div *ngFor="let result of results ">
+            <div class="resultTitle" *ngIf="getMatchName(result.code)">
+                {{getMatchName(result.code)}}
             </div>
-            <div class="resultScore">
-                <div *ngIf="result.score[0] || result.score[1]">
-                    {{result.score[0]}} - {{result.score[1]}}
+            <div class="result">
+                <div class="resultTeam" *ngFor="let team of result.teams">
+                    {{team.players[0] || '?'}} {{team.players[1] || '?'}}
                 </div>
-                <div *ngIf="!result.score[0] && !result.score[1]">
-                    &nbsp; - &nbsp;
+                <div class="resultScore">
+                    <div *ngIf="result.score[0] || result.score[1]">
+                        {{result.score[0]}} - {{result.score[1]}}
+                    </div>
+                    <div *ngIf="!result.score[0] && !result.score[1]">
+                        &nbsp; - &nbsp;
+                    </div>
                 </div>
             </div>
         </div>
@@ -21,7 +44,7 @@
 
 <div class="teamSection">
     <div class="title">
-        Classifica
+        Classifica Eliminatorie
     </div>
     <div class="teamList">
         <div class="team" *ngFor="let team of teams">

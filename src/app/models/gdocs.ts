@@ -7,4 +7,6 @@ export interface gdocResult {
     "Risultato A": string;
     "Risultato B": string;
     "Games to win": string;
+    "Code": string;
+    "Note": string;
 }
