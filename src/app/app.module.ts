@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ActivityRepeatBtnComponent } from './components/activities/activity-repeat-btn/activity-repeat-btn.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ActivityRepeatBtnComponent
   ],
   imports: [
     BrowserModule,
