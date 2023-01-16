@@ -14,6 +14,8 @@ export class TournamentComponent {
   public teams: TournamentTeam[] = [];
   public winningTeams: TournamentWinningTeam[] = [];
 
+  // public titleColors = ['#7c4dff', '#0091ea', '#ff9100', '#ff1744']
+
   constructor(
     private tournamentService: TournamentService,
     private gdocService: GdocService

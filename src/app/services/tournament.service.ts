@@ -1,6 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { gdocResult } from '../models/gdocs';
-import { Player, Result } from '../models/result';
 import { TournamentResult, TournamentTeam, TournamentWinningTeam } from '../models/tournament';
 
 @Injectable({
@@ -75,9 +74,11 @@ export class TournamentService {
 
     } else {
       // Update teams
-      this.updateTeam(teamA, score);
-      this.updateTeam(teamB, [...score].reverse());
+      if (teamA.players[0] && teamA.players[1] && teamB.players[0] && teamB.players[1]) {
+        this.updateTeam(teamA, score);
+        this.updateTeam(teamB, [...score].reverse());
 
+      }
     }
 
 
@@ -118,14 +119,16 @@ export class TournamentService {
 
 
   private updateTeam(team: TournamentTeam, score: number[]) {
-    team.totalGamesPlayed += score[0] + score[1];
-    team.totalGamesWon += score[0];
-    team.totalSetPlayed += 1;
-    if (score[0] > score[1]) {
-      team.totalSetWon += 1;
-    }
+    if (score[0] || score[1]) {
+      team.totalGamesPlayed += score[0] + score[1];
+      team.totalGamesWon += score[0];
+      team.totalSetPlayed += 1;
+      if (score[0] > score[1]) {
+        team.totalSetWon += 1;
+      }
 
-    team.totalPoints += this.getPoints(score[0], score[1]);
+      team.totalPoints += this.getPoints(score[0], score[1]);
+    }
 
     this.saveTeam(team);
   }

@@ -1,5 +1,11 @@
-.pageTitle {
-    text-align: center;
+.tournament-page {
+    background-image: url("../../../assets/images/pattern.jpg");
+    background-repeat: repeat;
+    background-size: 40%;
+
+    display: block;
+    padding: 0;
+    margin: -10px;
 }
 
 .resultSection {
@@ -18,4 +24,69 @@
 .team {
     display: flex;
     justify-content: space-evenly;
+}
+
+.section {
+    margin: 15px 10%;
+    display: block;
+    @media screen and (max-width: 768px) {
+        margin: 15px 5px;
+    }
+}
+
+.resultHeader {
+    text-align: center;
+}
+.resultValue {
+    text-align: center;
+}
+
+/////  TITLe  /////
+
+.pageTitle {
+    font-family: "Calligraffitti", cursive;
+    font-weight: 700;
+    font-size: 4rem;
+    text-shadow: -15px 5px 20px #ced0d3;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #f9f1cc;
+    text-shadow: 2px 2px 0px #ffb650, 4px 4px 0px #ffd662, 6px 6px 0px #ff80bf, 8px 8px 0px #ef5097,
+        10px 10px 0px #6868ac, 12px 12px 0px #90b1e0;
+}
+
+/////  rolling writing  /////
+.center {
+    margin: 0 auto;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: -30px;
+    margin-top: -30px;
+}
+.table .monitor-wrapper {
+    width: 97%;
+}
+.table .monitor-wrapper .monitor {
+    width: 92%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.table .monitor-wrapper .monitor p {
+    font-family: "VT323", monospace;
+    font-size: 30px;
+    position: relative;
+    display: inline-block;
+    animation: move 30s infinite linear;
+    color: #ebb55f;
+}
+
+@keyframes move {
+    from {
+        left: 800px;
+    }
+    to {
+        left: -4800px;
+    }
 }

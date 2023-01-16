@@ -1,73 +1,102 @@
-<div class="pageTitle">
-    Torneo 0 del gruppo P.P.Padel
-</div>
-
-<div class="teamSection" *ngIf="winningTeams?.length">
-    <div class="title">
-        Vincitori
-    </div>
-    <div class="teamList">
-        <div class="team" *ngFor="let team of winningTeams">
-            <div class="teamName">
-                {{team.position}} {{team.players[0]}} {{team.players[1]}}
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="resultSection">
-    <div class="title">
-        Partite
-    </div>
-    <div class="resultList">
-
-        <div *ngFor="let result of results ">
-            <div class="resultTitle" *ngIf="getMatchName(result.code)">
-                {{getMatchName(result.code)}}
-            </div>
-            <div class="result">
-                <div class="resultTeam" *ngFor="let team of result.teams">
-                    {{team.players[0] || '?'}} {{team.players[1] || '?'}}
-                </div>
-                <div class="resultScore">
-                    <div *ngIf="result.score[0] || result.score[1]">
-                        {{result.score[0]}} - {{result.score[1]}}
-                    </div>
-                    <div *ngIf="!result.score[0] && !result.score[1]">
-                        &nbsp; - &nbsp;
-                    </div>
+<div class="tournament-page">
+    <div class="title-container">
+        <div class="pageTitle">P.P.Padel</div>
+        <div class="table center">
+            <div class="monitor-wrapper center">
+                <div class="monitor center">
+                    <p>Il torneo numero 0 del nostro gruppo. Torneo goliardico senza grosse pretese di competitività In
+                        bocca al lupo a tutti e che vinca il più allegro</p>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="teamSection">
-    <div class="title">
-        Classifica Girone
-    </div>
-    <div class="teamList">
-        <div class="team" *ngFor="let team of teams">
-            <div class="teamName">
-                {{team.players[0]}} {{team.players[1]}}
-            </div>
-            <div class="teamScore">
-                {{team.totalPoints}}
+
+    <p-panel class="section" header="Vincitori" *ngIf="winningTeams?.length" [toggleable]="true">
+
+        <div class="teamList">
+            <div class="team" *ngFor="let team of winningTeams">
+                <div class="teamName">
+                    {{team.position}} {{team.players[0]}} {{team.players[1]}}
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </p-panel>
 
 
-<div class="infoSection">
-    <div class="title">
-        Informazioni
-    </div>
-    <div class="info">
-        Durante la fase del girone il punteggio è calcolato con il seguente metodo:
-        <ul>
-            <li>Per ogni partita vinta si ottengono 15 punti meno il numero di game persi</li>
-            <li>Per ogni partita persa si ottengono un numero di punti pari ai game vinti</li>
-        </ul>
-    </div>
+
+    <p-panel header="Partite" class="section resultSection" [toggleable]="true">
+
+        <p-table [value]="results" class="resultList">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="resultHeader">Squadra 1</th>
+                    <th class="resultHeader">Squadra 2</th>
+                    <th class="resultHeader">Risultato</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-result>
+                <tr class="resultTitle" *ngIf="getMatchName(result.code)">
+                    <td colspan="3">{{getMatchName(result.code)}}</td>
+                </tr>
+                <tr>
+                    <td class="resultValue">{{result.teams[0].players[0] || '?'}} {{result.teams[0].players[1] || '?'}}
+                    </td>
+                    <td class="resultValue">{{result.teams[1].players[0] || '?'}} {{result.teams[1].players[1] || '?'}}
+                    </td>
+                    <td class="resultValue">
+                        <div *ngIf="result.score[0] || result.score[1]">
+                            {{result.score[0]}} - {{result.score[1]}}
+                        </div>
+                        <div *ngIf="!result.score[0] && !result.score[1]">
+                            &nbsp; - &nbsp;
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+
+
+    </p-panel>
+
+    <p-panel header="Classifica Girone" class="section sectionteamSection" [toggleable]="true">
+
+        <p-table [value]="teams" class="teamList">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="resultHeader">Squadra</th>
+                    <th class="resultHeader">Punti</th>
+                    <th class="resultHeader">Giocate</th>
+                    <th class="resultHeader">Vinte</th>
+                    <th class="resultHeader">Game Giocati</th>
+                    <th class="resultHeader">Game Vinti</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-team>
+
+                <tr>
+                    <td class="teamName"> {{team.players[0]}} {{team.players[1]}}</td>
+                    <th class="teamPoints">{{team.totalPoints || '-'}}</th>
+                    <th class="resultHeader">{{team.totalSetPlayed || '-'}}</th>
+                    <th class="teamInfo">{{team.totalSetWon || '-'}}</th>
+                    <th class="teamInfo">{{team.totalGamesPlayed || '-'}}</th>
+                    <th class="teamInfo">{{team.totalGamesWon || '-'}}</th>
+                </tr>
+            </ng-template>
+        </p-table>
+
+
+
+    </p-panel>
+
+    <p-card class="section">
+        <div class="info">
+            Durante la fase del girone il punteggio è calcolato con il seguente metodo:
+            <ul>
+                <li>Per ogni partita vinta si ottengono 15 punti meno il numero di game persi</li>
+                <li>Per ogni partita persa si ottengono un numero di punti pari ai game vinti</li>
+            </ul>
+        </div>
+    </p-card>
+
 </div>
