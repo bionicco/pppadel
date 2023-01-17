@@ -37,7 +37,7 @@
             </ng-template>
             <ng-template pTemplate="body" let-result>
                 <tr class="resultTitle" *ngIf="getMatchName(result.code)">
-                    <td colspan="3">{{getMatchName(result.code)}}</td>
+                    <td colspan="3" class="matchTitle">{{getMatchName(result.code)}}</td>
                 </tr>
                 <tr>
                     <td class="resultValue">{{result.teams[0].players[0] || '?'}} {{result.teams[0].players[1] || '?'}}
