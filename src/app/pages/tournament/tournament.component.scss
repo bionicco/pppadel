@@ -40,6 +40,11 @@
 .resultValue {
     text-align: center;
 }
+td.resultValue .resultValue-result {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+}
 
 .matchTitle {
     text-align: center !important;

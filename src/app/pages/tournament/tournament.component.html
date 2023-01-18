@@ -51,7 +51,7 @@
                             [player2]="result.teams[1].players[1]"></tournament-team>
                     </td>
                     <td class="resultValue">
-                        <div *ngIf="result.score[0] || result.score[1]">
+                        <div class="resultValue-result" *ngIf="result.score[0] || result.score[1]">
                             {{result.score[0]}} - {{result.score[1]}}
                         </div>
                         <div *ngIf="!result.score[0] && !result.score[1]">

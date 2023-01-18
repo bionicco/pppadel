@@ -58,10 +58,17 @@ img.team-avatar-img {
 
 .team-name {
     font-size: 1.2rem;
+    @media screen and (max-width: 768px) {
+        font-size: 1rem;
+    }
+    font-weight: 600;
 }
 
 .team-players {
     font-size: 0.9rem;
+    @media screen and (max-width: 768px) {
+        font-size: 0.8rem;
+    }
 }
 
 .team-container {

@@ -5,3 +5,12 @@
     text-align: center;
     width: 100%;
 }
+
+.p-panel .p-panel-content {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.p-datatable .p-datatable-tbody > tr > td.resultValue {
+    padding: 1rem 0.5rem;
+}
