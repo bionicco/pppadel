@@ -47,6 +47,25 @@
     font-weight: 700;
 }
 
+.pageTitle {
+}
+.pageTitle {
+    font-weight: bold;
+}
+
+.teamName {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+span.teamPosition {
+    font-size: 2rem;
+    font-weight: 800;
+    display: inline-block;
+    margin-right: 19px;
+}
+
 /////  TITLe  /////
 
 .pageTitle {

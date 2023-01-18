@@ -1,0 +1,33 @@
+.team-avatar {
+    width: 48px;
+    /* height: 96px; */
+    display: inline-block;
+    margin-right: 10px;
+}
+
+img.team-avatar-img {
+    object-fit: cover;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid #444;
+    padding: 2px;
+    /* margin-right: 10px; */
+}
+
+.team-avatars {
+    display: inline-block;
+}
+
+.team-names {
+    display: inline-block;
+}
+
+.team-name {
+    font-size: 1.2rem;
+}
+
+.team-container {
+    display: flex;
+    align-items: center;
+}
