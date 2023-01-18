@@ -41,14 +41,5 @@ export class TournamentComponent {
 
   }
 
-  getMatchName(code: string): string {
-    switch (code.split('-')[1].toLocaleUpperCase()) {
-      case 'F3':
-        return 'Finale terzo e quarto posto';
-      case 'F1':
-        return 'Finale primo e secondo posto';
-      default:
-        return '';
-    }
-  }
+
 }

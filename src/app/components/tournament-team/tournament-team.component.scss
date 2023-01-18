@@ -4,14 +4,18 @@
 }
 
 .team-avatar {
-    width: 48px;
-    /* height: 96px; */
+    width: 50px;
+    height: 50px;
     display: inline-block;
     margin-right: 10px;
     @media screen and (max-width: 768px) {
-        width: 32px;
+        width: 34px;
+        height: 34px;
         margin-right: 5px;
     }
+    border-radius: 50%;
+    background: linear-gradient(45deg, lightblue, #eee, turquoise);
+    padding: 1px 2px 0px 1px;
 }
 
 img.team-avatar-img {
@@ -20,9 +24,6 @@ img.team-avatar-img {
     height: 48px;
     border-radius: 50%;
     border: none;
-    padding: 2px;
-
-    background: linear-gradient(45deg, lightblue 40%, #eee 60%, turquoise) 1;
 
     @media screen and (max-width: 768px) {
         width: 32px;
@@ -38,7 +39,7 @@ img.team-avatar-img {
 .team-names {
     color: rgb(2, 121, 109);
     border: 3px solid;
-    border-image: linear-gradient(45deg, lightblue, #eee, turquoise) 1;
+    border-image: linear-gradient(45deg, lightblue, #eee, turquoise);
     transform: skew(-20deg);
     -webkit-transform: skew(-20deg);
     -moz-transform: skew(-20deg);

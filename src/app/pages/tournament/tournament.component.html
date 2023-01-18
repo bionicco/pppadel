@@ -38,8 +38,8 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-result>
-                <tr class="resultTitle" *ngIf="getMatchName(result.code)">
-                    <td colspan="3" class="matchTitle">{{getMatchName(result.code)}}</td>
+                <tr class="resultTitle" *ngIf="result.note">
+                    <td colspan="3" class="matchTitle">{{result.note}}</td>
                 </tr>
                 <tr>
                     <td class="resultValue">
