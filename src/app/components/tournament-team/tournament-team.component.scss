@@ -39,7 +39,7 @@ img.team-avatar-img {
 .team-names {
     color: rgb(2, 121, 109);
     border: 3px solid;
-    border-image: linear-gradient(45deg, lightblue, #eee, turquoise);
+    border-image: linear-gradient(45deg, lightblue, #eee, turquoise) 1;
     transform: skew(-20deg);
     -webkit-transform: skew(-20deg);
     -moz-transform: skew(-20deg);
