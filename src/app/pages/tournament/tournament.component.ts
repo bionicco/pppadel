@@ -41,5 +41,9 @@ export class TournamentComponent {
 
   }
 
+  validMatch(match: TournamentResult): boolean {
+    return match.teams[0].players[0] !== '' && match.teams[0].players[1] !== '' && match.teams[1].players[0] !== '' && match.teams[1].players[1] !== '';
+  }
+
 
 }
