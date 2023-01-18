@@ -10,3 +10,9 @@ export interface gdocResult {
     "Code": string;
     "Note": string;
 }
+
+export interface gdocTeam {
+    "Giocatore 1": string;
+    "Giocatore 2": string;
+    "Nome squadra": string;
+}

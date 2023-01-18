@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { gdocResult } from '../models/gdocs';
+import { gdocResult, gdocTeam } from '../models/gdocs';
 import { TournamentResult, TournamentTeam, TournamentWinningTeam } from '../models/tournament';
 
 @Injectable({
@@ -12,6 +12,8 @@ export class TournamentService {
   public results: TournamentResult[] = [];
 
   public teams: TournamentTeam[] = [];
+
+  public teamNames: gdocTeam[] = []
 
   public winningTeams: TournamentWinningTeam[] = [];
 
@@ -29,7 +31,18 @@ export class TournamentService {
     });
 
     this.newData.emit(this.results);
+  }
 
+  setTeamNames(teams: gdocTeam[]) {
+    this.teamNames = teams;
+  }
+
+  getTeamName(player1: string, player2: string): string {
+    const team = this.teamNames.find(team => (team['Giocatore 1'].toLowerCase() === player1.toLowerCase() && team['Giocatore 2'].toLowerCase() === player2.toLowerCase()) || (team['Giocatore 1'].toLowerCase() === player2.toLowerCase() && team['Giocatore 2'].toLowerCase() === player1.toLowerCase()));
+    if (team) {
+      return team['Nome squadra'];
+    }
+    return `${player1} - ${player2}`;
   }
 
   private createResult(gResult: gdocResult): TournamentResult {
