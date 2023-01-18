@@ -19,8 +19,11 @@ img.team-avatar-img {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    border: 1px solid #444;
+    border: none;
     padding: 2px;
+
+    background: linear-gradient(45deg, lightblue 40%, #eee 60%, turquoise) 1;
+
     @media screen and (max-width: 768px) {
         width: 32px;
         height: 32px;
@@ -33,9 +36,9 @@ img.team-avatar-img {
 }
 
 .team-names {
-    // background: rgb(122, 206, 122);
+    color: rgb(2, 121, 109);
     border: 3px solid;
-    border-image: linear-gradient(45deg, turquoise, greenyellow) 1;
+    border-image: linear-gradient(45deg, lightblue, #eee, turquoise) 1;
     transform: skew(-20deg);
     -webkit-transform: skew(-20deg);
     -moz-transform: skew(-20deg);
