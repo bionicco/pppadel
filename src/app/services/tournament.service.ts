@@ -42,7 +42,7 @@ export class TournamentService {
     if (team) {
       return team['Nome squadra'];
     }
-    return `${player1} - ${player2}`;
+    return '';
   }
 
   private createResult(gResult: gdocResult): TournamentResult {
