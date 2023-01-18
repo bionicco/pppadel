@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ActivityRepeatBtnComponent } from './components/activities/activity-repeat-btn/activity-repeat-btn.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TournamentComponent } from './pages/tournament/tournament.component';
 
@@ -13,14 +12,15 @@ import { CardModule } from 'primeng/card';
 import { PanelModule } from 'primeng/panel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
+import { TournamentTeamComponent } from './components/tournament-team/tournament-team.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ActivityRepeatBtnComponent,
     HomeComponent,
-    TournamentComponent
+    TournamentComponent,
+    TournamentTeamComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,9 @@
         <div class="teamList">
             <div class="team" *ngFor="let team of winningTeams">
                 <div class="teamName">
-                    {{team.position}} {{team.players[0]}} {{team.players[1]}}
+                    <span class="teamPosition">{{team.position}}</span>
+
+                    <tournament-team [player1]="team.players[0]" [player2]="team.players[1]"></tournament-team>
                 </div>
             </div>
         </div>
@@ -40,9 +42,13 @@
                     <td colspan="3" class="matchTitle">{{getMatchName(result.code)}}</td>
                 </tr>
                 <tr>
-                    <td class="resultValue">{{result.teams[0].players[0] || '?'}} {{result.teams[0].players[1] || '?'}}
+                    <td class="resultValue">
+                        <tournament-team [player1]="result.teams[0].players[0]"
+                            [player2]="result.teams[0].players[1]"></tournament-team>
                     </td>
-                    <td class="resultValue">{{result.teams[1].players[0] || '?'}} {{result.teams[1].players[1] || '?'}}
+                    <td class="resultValue">
+                        <tournament-team [player1]="result.teams[1].players[0]"
+                            [player2]="result.teams[1].players[1]"></tournament-team>
                     </td>
                     <td class="resultValue">
                         <div *ngIf="result.score[0] || result.score[1]">
@@ -75,7 +81,9 @@
             <ng-template pTemplate="body" let-team>
 
                 <tr>
-                    <td class="teamName"> {{team.players[0]}} {{team.players[1]}}</td>
+                    <td class="teamName">
+                        <tournament-team [player1]="team.players[0]" [player2]="team.players[1]"></tournament-team>
+                    </td>
                     <th class="teamPoints">{{team.totalPoints || '-'}}</th>
                     <th class="resultHeader">{{team.totalSetPlayed || '-'}}</th>
                     <th class="teamInfo">{{team.totalSetWon || '-'}}</th>

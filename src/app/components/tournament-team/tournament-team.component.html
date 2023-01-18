@@ -1,0 +1,15 @@
+<div class="team container">
+    <div class="avatars">
+        <div class="avatar">
+            <img class="avatar-img" [src]="getImage(player1)" />
+        </div>
+        <div class="avatar">
+            <img class="avatar-img" [src]="getImage(player2)" />
+        </div>
+    </div>
+    <div class="team-names">
+        <div class="name" *ngIf="getTeamName()">{{getTeamName()}}</div>
+        <div class="name" *ngIf="!getTeamName()">{{player1}} - {{player2}}</div>
+        <div class="players" *ngIf="!getTeamName()"> {{player1}} - {{player2}}</div>
+    </div>
+</div>
