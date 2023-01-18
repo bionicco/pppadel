@@ -3,6 +3,7 @@ export interface TournamentResult {
     score: number[];
     gamesToWin: number;
     code: string;
+    note: string;
 }
 
 export interface TournamentTeam {

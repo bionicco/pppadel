@@ -49,6 +49,7 @@ export class TournamentService {
     const score: number[] = [this.parseNumber(gResult['Risultato A']), this.parseNumber(gResult['Risultato B'])];
     const gamesToWin: number = this.parseNumber(gResult['Games to win']);
     const code: string = gResult['Code'];
+    const note: string = gResult['Note'];
     const teams = this.createTeams([gResult['Giocatore A1'], gResult['Giocatore A2']], [gResult['Giocatore B1'], gResult['Giocatore B2']], score, code);
 
     return {
@@ -56,6 +57,7 @@ export class TournamentService {
       score,
       gamesToWin,
       code,
+      note
     }
   }
 
