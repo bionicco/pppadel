@@ -28,6 +28,10 @@ export class TournamentComponent {
     this.gdocService.getTournament().subscribe(res => {
       return
     })
+    this.gdocService.getTeams().subscribe(res => {
+      return
+    })
+
 
     this.tournamentService.newData.subscribe((res) => {
       this.results = res;

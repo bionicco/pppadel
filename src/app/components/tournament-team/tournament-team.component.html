@@ -8,8 +8,10 @@
         </div>
     </div>
     <div class="team-names">
-        <div class="team-name" *ngIf="getTeamName() || 1">{{getTeamName()}} Nome squadra</div>
-        <div class="team-name" *ngIf="!getTeamName()">{{player1}} - {{player2}}</div>
-        <div class="team-players" *ngIf="!getTeamName() || 1"> {{player1}} - {{player2}}</div>
+        <div class="team-names-container">
+            <div class="team-name" *ngIf="getTeamName()">{{getTeamName()}}</div>
+            <div class="team-name" *ngIf="!getTeamName()">{{player1}} {{player2}}</div>
+            <div class="team-players" *ngIf="getTeamName()"> {{player1}} {{player2}}</div>
+        </div>
     </div>
 </div>
