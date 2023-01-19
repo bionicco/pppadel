@@ -16,7 +16,7 @@ export class TournamentTeamComponent implements OnInit {
   public image2: string = '';
   private imageDefault = IMAGE_PATH + 'default.jpg';
 
-  playerWithAvatars = ['adriana', 'andrea', 'bene', 'carlo', 'claudio', 'david', 'default', 'giulia', 'leonardo', 'marco', 'mario', 'michelangelo', 'paola', 'peco']
+  playerWithAvatars = ['adriana', 'andream', 'bene', 'carlo', 'claudio', 'david', 'default', 'giulia', 'leonardo', 'marco', 'mario', 'michelangelo', 'paola', 'andreap']
   constructor(
     private tournamentService: TournamentService
   ) { }
@@ -32,7 +32,7 @@ export class TournamentTeamComponent implements OnInit {
 
   getImage(playerName: string): string {
     if (this.playerWithAvatars.includes(playerName.toLowerCase())) {
-      return IMAGE_PATH + playerName.toLowerCase() + '.jpg';
+      return IMAGE_PATH + playerName.toLowerCase().replace(' ', '') + '.jpg';
     }
     return this.imageDefault;
   }
