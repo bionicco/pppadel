@@ -31,8 +31,9 @@ export class TournamentTeamComponent implements OnInit {
   }
 
   getImage(playerName: string): string {
-    if (this.playerWithAvatars.includes(playerName.toLowerCase())) {
-      return IMAGE_PATH + playerName.toLowerCase().replace(' ', '') + '.jpg';
+    const filename = playerName.toLowerCase().replace(' ', '');
+    if (this.playerWithAvatars.includes(filename)) {
+      return IMAGE_PATH + filename + '.jpg';
     }
     return this.imageDefault;
   }
