@@ -151,7 +151,7 @@ export class TournamentService {
   private getPoints(myGames: number, theirGames: number): number {
     let res = 0;
     if (myGames > theirGames) {
-      res += 10 + 5 - theirGames;
+      res += 10 - theirGames;
     } else {
       res += myGames;
     }
