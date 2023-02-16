@@ -28,13 +28,23 @@ export class GdocService {
           this.papa.parse(res, {
             header: true,
             complete: (result) => {
-              const parsed = result.data as gdocResult[];
+              const parsed = this.cleanGdocResult(result.data as gdocResult[]);
               this.algoService.calculator(parsed);
             }
           });
           return res;
         })
       );
+  }
+
+  private cleanGdocResult(parsed: gdocResult[]): gdocResult[] {
+    parsed.forEach((item) => {
+      item['Giocatore A1'] = item['Giocatore A1'].trim();
+      item['Giocatore A2'] = item['Giocatore A2'].trim();
+      item['Giocatore B1'] = item['Giocatore B1'].trim();
+      item['Giocatore B2'] = item['Giocatore B2'].trim();
+    });
+    return parsed;
   }
 
   public getTournament(): Observable<any> {
@@ -46,7 +56,8 @@ export class GdocService {
           this.papa.parse(res, {
             header: true,
             complete: (result) => {
-              const parsed = result.data as gdocResult[];
+              const parsed = this.cleanGdocResult(result.data as gdocResult[]);
+
               this.tournamentService.calculator(parsed);
             }
           });
@@ -55,6 +66,15 @@ export class GdocService {
       );
   }
 
+
+  private cleanGdocTeam(parsed: gdocTeam[]): gdocTeam[] {
+    parsed.forEach((item) => {
+      item['Giocatore 1'] = item['Giocatore 1'].trim();
+      item['Giocatore 2'] = item['Giocatore 2'].trim();
+      item['Nome squadra'] = item['Nome squadra'].trim();
+    });
+    return parsed;
+  }
 
   public getTeams(): Observable<any> {
     const url =
@@ -65,7 +85,7 @@ export class GdocService {
           this.papa.parse(res, {
             header: true,
             complete: (result) => {
-              const parsed = result.data as gdocTeam[];
+              const parsed = this.cleanGdocTeam(result.data as gdocTeam[]);
               this.tournamentService.setTeamNames(parsed);
             }
           });
